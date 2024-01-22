@@ -1,21 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Email: React.FC = () => {
-    const [value, setValue]: [string, React.Dispatch<React.SetStateAction<string>>] = useState<string>("")
-    const [error, setError] = useState<boolean>(false)
+interface Props {
+    value: string, 
+    error: boolean, 
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void, 
+    handleSubmit: () => void
+}
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        e.preventDefault();
-        setValue(e.target.value);
-        setError(false);
-    }
-    const handleSubmit = () => {
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) === false) {
-            setError(true);
-        } else {
-
-        }
-    }
+const Email: React.FC<Props> = ({value, error, handleChange, handleSubmit}) => {
+    
+   
 
   return (
     <div className='mt-8'>
@@ -38,7 +32,7 @@ const Email: React.FC = () => {
             value={value}
             onChange={handleChange}/>
             
-            <button onClick={handleSubmit} className='bg-[#1a1f3c] hover:bg-[#040717] rounded-lg px-1 py-5 w-full text-white mt-6'>
+            <button onClick={handleSubmit} className='bg-[#1a1f3c] hover:bg-[#f36a55] rounded-lg px-1 py-5 w-full text-white mt-6'>
                 Subscribe to monthly newsletter
             </button>
         </div>
